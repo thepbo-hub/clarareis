@@ -1,0 +1,6 @@
+{
+  "name": "Clara Reis Studio",
+  "description": "Biosite premium oficial do Clara Reis Studio — Especialista em beleza, cabelos e unhas. Agendamentos, portfólio e atendimento exclusivo.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
