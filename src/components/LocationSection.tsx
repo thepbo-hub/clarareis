@@ -2,20 +2,51 @@ import React from 'react';
 import { MapPin, Navigation, Compass, ExternalLink } from 'lucide-react';
 import { DEFAULT_STUDIO_CONFIG } from '../config/studioConfig';
 
-// Brand SVGs for Navigation Providers
-const WazeIcon: React.FC<{ className?: string }> = ({ className = 'w-4 h-4' }) => (
-  <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
-    <path d="M20.54 10.42c-.22-4.66-4.04-8.38-8.77-8.38-4.85 0-8.77 3.92-8.77 8.77 0 1.95.64 3.76 1.73 5.22L3.1 19.34a.75.75 0 00.94.94l3.31-1.63c1.33.74 2.86 1.16 4.42 1.16 3.1 0 5.86-1.6 7.45-4.02.1-.15.2-.3.29-.46 1.25-2.06 1.34-3.52 1.03-4.91zm-11.8 1.34a1.25 1.25 0 110-2.5 1.25 1.25 0 010 2.5zm6.52 0a1.25 1.25 0 110-2.5 1.25 1.25 0 010 2.5zm-5.06 3.86a.75.75 0 011.06 0 2.25 2.25 0 003.18 0 .75.75 0 111.06 1.06 3.75 3.75 0 01-5.3 0 .75.75 0 010-1.06z" />
+// Brand SVGs for Navigation Providers (Authentic Original Emblems)
+const WazeIcon: React.FC<{ className?: string }> = ({ className = 'w-6 h-6' }) => (
+  <svg viewBox="0 0 36 36" className={className} fill="none" aria-hidden="true">
+    {/* Wheels */}
+    <circle cx="11.5" cy="29" r="3.5" fill="#1E232A" />
+    <circle cx="23.5" cy="29" r="3.5" fill="#1E232A" />
+    <circle cx="11.5" cy="29" r="1.3" fill="#FFFFFF" />
+    <circle cx="23.5" cy="29" r="1.3" fill="#FFFFFF" />
+    {/* Cyan Car Body */}
+    <path
+      d="M30 15C30 21.6 24.6 27 18 27C14.7 27 11.7 25.7 9.5 23.6L5 25.2C4.1 25.5 3.3 24.7 3.6 23.8L4.6 20.1C3.6 18.2 3 16 3 13.5C3 6.9 9.7 1.5 18 1.5C24.6 1.5 30 6.9 30 13.5V15Z"
+      fill="#33CCFF"
+    />
+    {/* Eyes */}
+    <circle cx="13" cy="13" r="2.2" fill="#1E232A" />
+    <circle cx="22" cy="13" r="2.2" fill="#1E232A" />
+    {/* Smile */}
+    <path
+      d="M14.5 17.5C15.5 19 19.5 19 20.5 17.5"
+      stroke="#1E232A"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+    />
   </svg>
 );
 
-const UberIcon: React.FC<{ className?: string }> = ({ className = 'w-4 h-4' }) => (
-  <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
-    <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 3.2c3.756 0 6.8 3.044 6.8 6.8s-3.044 6.8-6.8 6.8-6.8-3.044-6.8-6.8S8.244 5.2 12 5.2zm-2.8 4.4v4.8h5.6v-1.6h-3.6V9.6H9.2z" />
+const UberIcon: React.FC<{ className?: string }> = ({ className = 'w-6 h-6' }) => (
+  <svg viewBox="0 0 36 36" className={className} aria-hidden="true">
+    <rect width="36" height="36" rx="8" fill="#000000" />
+    <text
+      x="18"
+      y="22.5"
+      textAnchor="middle"
+      fill="#FFFFFF"
+      fontFamily="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
+      fontWeight="700"
+      fontSize="11.5"
+      letterSpacing="-0.2px"
+    >
+      Uber
+    </text>
   </svg>
 );
 
-const GoogleMapsIcon: React.FC<{ className?: string }> = ({ className = 'w-4 h-4' }) => (
+const GoogleMapsIcon: React.FC<{ className?: string }> = ({ className = 'w-6 h-6' }) => (
   <svg viewBox="0 0 24 24" className={className} aria-hidden="true">
     <path
       fill="#4285F4"
@@ -160,7 +191,7 @@ export const LocationSection: React.FC = () => {
               className="flex flex-col items-center justify-center p-2.5 rounded-xl bg-white border border-[#E7D3A0] hover:border-[#C6A15B] hover:bg-[#FAF8F3] shadow-sm hover:shadow transition-all duration-200 active:scale-95 group text-center"
             >
               <div className="w-8 h-8 rounded-lg bg-[#FAF8F3] flex items-center justify-center mb-1 group-hover:scale-110 transition-transform">
-                <GoogleMapsIcon className="w-4 h-4" />
+                <GoogleMapsIcon className="w-5 h-5" />
               </div>
               <span className="text-xs font-semibold text-[#171717] group-hover:text-[#C6A15B] transition-colors">
                 Google
@@ -177,8 +208,8 @@ export const LocationSection: React.FC = () => {
               rel="noopener noreferrer"
               className="flex flex-col items-center justify-center p-2.5 rounded-xl bg-white border border-[#E7D3A0] hover:border-[#C6A15B] hover:bg-[#FAF8F3] shadow-sm hover:shadow transition-all duration-200 active:scale-95 group text-center"
             >
-              <div className="w-8 h-8 rounded-lg bg-[#FAF8F3] flex items-center justify-center mb-1 text-[#33CCFF] group-hover:scale-110 transition-transform">
-                <WazeIcon className="w-5 h-5 text-[#33CCFF]" />
+              <div className="w-8 h-8 rounded-lg bg-[#FAF8F3] flex items-center justify-center mb-1 group-hover:scale-110 transition-transform">
+                <WazeIcon className="w-6 h-6" />
               </div>
               <span className="text-xs font-semibold text-[#171717] group-hover:text-[#C6A15B] transition-colors">
                 Waze
@@ -195,8 +226,8 @@ export const LocationSection: React.FC = () => {
               rel="noopener noreferrer"
               className="flex flex-col items-center justify-center p-2.5 rounded-xl bg-white border border-[#E7D3A0] hover:border-[#C6A15B] hover:bg-[#FAF8F3] shadow-sm hover:shadow transition-all duration-200 active:scale-95 group text-center"
             >
-              <div className="w-8 h-8 rounded-lg bg-[#FAF8F3] flex items-center justify-center mb-1 text-[#171717] group-hover:scale-110 transition-transform">
-                <UberIcon className="w-5 h-5 text-[#171717]" />
+              <div className="w-8 h-8 rounded-lg bg-[#FAF8F3] flex items-center justify-center mb-1 group-hover:scale-110 transition-transform">
+                <UberIcon className="w-6 h-6" />
               </div>
               <span className="text-xs font-semibold text-[#171717] group-hover:text-[#C6A15B] transition-colors">
                 Uber
