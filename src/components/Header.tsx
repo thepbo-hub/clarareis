@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Calendar, ChevronDown } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 import { DEFAULT_STUDIO_CONFIG } from '../config/studioConfig';
 import { calculateBusinessStatus, BusinessStatusResult } from '../utils/businessHours';
 
@@ -119,17 +119,44 @@ export const Header: React.FC = () => {
         </div>
       </div>
 
-      {/* Main Booking Button with 5-second Blade-Light Sweep (.booking-shine) */}
-      <div className="relative z-10 w-full max-w-xs mt-6">
+      {/* 3D Shiny Embossed Button to Trinks App Section (Blade Sweep Every 3s) */}
+      <div className="relative z-10 mt-5 w-full max-w-[290px] px-2">
         <a
-          href={DEFAULT_STUDIO_CONFIG.links.booking}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="booking-shine group flex items-center justify-center gap-2.5 w-full py-3.5 px-6 rounded-2xl bg-gradient-to-r from-[#D5AA64] via-[#E4C17F] to-[#BF954E] border border-white/60 text-[#171717] font-semibold text-xs sm:text-sm tracking-widest uppercase shadow-lg shadow-[#916B2D]/25 hover:shadow-xl hover:shadow-[#916B2D]/35 transition-all duration-300 active:scale-[0.98]"
+          href="#trinks-section"
+          onClick={(e) => {
+            e.preventDefault();
+            const target = document.getElementById('trinks-section');
+            if (target) {
+              target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+          }}
+          aria-label="Ir para o aplicativo Trinks"
+          className="btn-3d-trinks blade-light-3s group flex items-center justify-between gap-3 w-full py-3 px-4 sm:px-4.5 rounded-2xl cursor-pointer select-none"
         >
-          <Calendar className="w-4 h-4 text-[#171717] transition-transform duration-300 group-hover:scale-110" />
-          <span className="whitespace-nowrap font-bold">
-            Agendar Meu Horário
+          <div className="flex items-center gap-2.5">
+            <span className="w-9 h-9 rounded-xl bg-white/95 border border-[#D4A853]/40 p-1 flex items-center justify-center shadow-xs shrink-0 group-hover:scale-105 transition-transform">
+              <img
+                src="https://i.postimg.cc/x1Y95b26/Trinks-sem-fundo.png"
+                alt=""
+                aria-hidden="true"
+                className="w-full h-full object-contain"
+              />
+            </span>
+            <div className="flex flex-col text-left">
+              <strong className="font-manrope font-extrabold text-[13px] sm:text-[14px] text-[#171717] tracking-tight leading-tight drop-shadow-[0_1px_0_rgba(255,255,255,0.7)]">
+                Aplicativo Trinks
+              </strong>
+              <span className="font-manrope font-medium text-[10.5px] text-[#704F18]">
+                Avalie & Agende Online
+              </span>
+            </div>
+          </div>
+
+          <span
+            aria-hidden="true"
+            className="w-7 h-7 rounded-full bg-white/85 border border-[#CFA049]/40 flex items-center justify-center font-manrope font-bold text-xs text-[#171717] shadow-2xs group-hover:translate-x-0.5 transition-transform shrink-0"
+          >
+            ↓
           </span>
         </a>
       </div>

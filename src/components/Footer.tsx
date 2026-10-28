@@ -1,5 +1,5 @@
 import React from 'react';
-import { Calendar, MapPin } from 'lucide-react';
+import { MapPin } from 'lucide-react';
 import { DEFAULT_STUDIO_CONFIG } from '../config/studioConfig';
 
 const WhatsAppMiniIcon: React.FC<{ className?: string }> = ({ className = 'w-4 h-4' }) => (
@@ -55,16 +55,6 @@ export const Footer: React.FC = () => {
             className="w-10 h-10 rounded-full bg-white border border-[#E7D3A0] text-[#77736D] hover:text-[#C6A15B] hover:border-[#C6A15B] flex items-center justify-center shadow-sm transition-all hover:scale-105"
           >
             <WhatsAppMiniIcon className="w-4 h-4" />
-          </a>
-
-          <a
-            href={DEFAULT_STUDIO_CONFIG.links.booking}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Agendamento"
-            className="w-10 h-10 rounded-full bg-white border border-[#E7D3A0] text-[#77736D] hover:text-[#C6A15B] hover:border-[#C6A15B] flex items-center justify-center shadow-sm transition-all hover:scale-105"
-          >
-            <Calendar className="w-4 h-4" />
           </a>
 
           <a

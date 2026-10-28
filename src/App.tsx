@@ -1,32 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { Calendar, Sparkles } from 'lucide-react';
+import React from 'react';
 import { Header } from './components/Header';
 import { MarqueeBanner } from './components/MarqueeBanner';
 import { PortfolioCarousel } from './components/PortfolioCarousel';
 import { ContactButtons } from './components/ContactButtons';
+import { TrinksSection } from './components/TrinksSection';
 import { WifiSection } from './components/WifiSection';
 import { LocationSection } from './components/LocationSection';
 import { Footer } from './components/Footer';
 import { ScrollReveal } from './components/ScrollReveal';
-import { DEFAULT_STUDIO_CONFIG } from './config/studioConfig';
+import { FloatingTrinksButton } from './components/FloatingTrinksButton';
 
 export default function App() {
-  const [showStickyBooking, setShowStickyBooking] = useState(false);
-
-  // Show floating booking button when user scrolls past the hero section
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 450) {
-        setShowStickyBooking(true);
-      } else {
-        setShowStickyBooking(false);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   return (
     <div className="min-h-screen bg-[#FAF8F3] text-[#171717] font-sans relative overflow-x-hidden selection:bg-[#E7D3A0] selection:text-[#171717]">
       {/* Background Subtle Luxury Ambience Mesh */}
@@ -45,7 +29,7 @@ export default function App() {
       <MarqueeBanner />
 
       {/* 3. Main Centered Biosite Content Sections with Gentle Scroll Reveal */}
-      <main className="w-full max-w-lg mx-auto flex flex-col items-center px-0 pb-16">
+      <main className="w-full max-w-5xl mx-auto flex flex-col items-center px-0 pb-16">
         {/* Portfolio Carousel (3s Auto-advance & Touch/Drag, Corrected Descriptions) */}
         <ScrollReveal className="w-full">
           <PortfolioCarousel />
@@ -56,12 +40,17 @@ export default function App() {
           <ContactButtons />
         </ScrollReveal>
 
+        {/* Trinks Application Card (Downloads, Review, Subtle 3D, Phone Pulse) */}
+        <ScrollReveal className="w-full">
+          <TrinksSection />
+        </ScrollReveal>
+
         {/* Wi-Fi for Clients (Static Generic Password, Exclusive Copy Function) */}
         <ScrollReveal className="w-full">
           <WifiSection />
         </ScrollReveal>
 
-        {/* Location with Realistic Map, 3s Golden Waves, & Route Options (Google, Waze, Uber) */}
+        {/* Location with Map Image, 1s Propagating Small Waves, & Route Options (Google, Waze, Uber, Copiar Local) */}
         <ScrollReveal className="w-full">
           <LocationSection />
         </ScrollReveal>
@@ -72,25 +61,8 @@ export default function App() {
         </ScrollReveal>
       </main>
 
-      {/* Discreet Floating Booking Button (Thumb-Zone) */}
-      <div
-        className={`fixed bottom-4 inset-x-0 z-30 flex justify-center px-4 transition-all duration-500 pointer-events-none ${
-          showStickyBooking
-            ? 'opacity-100 translate-y-0'
-            : 'opacity-0 translate-y-8'
-        }`}
-      >
-        <a
-          href={DEFAULT_STUDIO_CONFIG.links.booking}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="pointer-events-auto flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-full bg-gradient-to-r from-[#C6A15B] via-[#E7D3A0] to-[#C6A15B] text-[#171717] font-semibold text-xs sm:text-sm tracking-wider uppercase shadow-xl shadow-[#C6A15B]/35 border border-white/60 active:scale-95 hover:scale-105 transition-all max-w-xs w-full"
-        >
-          <Calendar className="w-4 h-4 text-[#171717]" />
-          <span>Agendar Meu Horário</span>
-          <Sparkles className="w-3.5 h-3.5 text-[#171717]/80" />
-        </a>
-      </div>
+      {/* Floating Action Button (Bottom Right) to scroll to Trinks rectangle */}
+      <FloatingTrinksButton />
     </div>
   );
 }

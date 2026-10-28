@@ -1,6 +1,7 @@
-import React from 'react';
-import { MapPin, Navigation, Compass, ExternalLink } from 'lucide-react';
+import React, { useState } from 'react';
+import { MapPin, Navigation, Compass, ExternalLink, Copy, Check } from 'lucide-react';
 import { DEFAULT_STUDIO_CONFIG } from '../config/studioConfig';
+import { copyToClipboard } from '../utils/clipboard';
 
 // Brand SVGs for Navigation Providers (Authentic Original Emblems)
 const WazeIcon: React.FC<{ className?: string }> = ({ className = 'w-6 h-6' }) => (
@@ -61,6 +62,20 @@ export const LocationSection: React.FC = () => {
   const wazeUrl = 'https://waze.com/ul?q=Clara%20Reis%20Studio&navigate=yes';
   const uberUrl = 'https://m.uber.com/ul/?action=setPickup&pickup=my_location&dropoff[formatted_address]=Clara%20Reis%20Studio';
 
+  const [copiedLocation, setCopiedLocation] = useState(false);
+
+  const handleCopyLocation = async () => {
+    // Copies the official Google Maps link / location info directly to clipboard
+    const locationInfo = 'Clara Reis Studio: https://maps.app.goo.gl/e7eFqTGY1vUDkVaE7';
+    const success = await copyToClipboard(locationInfo);
+    if (success) {
+      setCopiedLocation(true);
+      setTimeout(() => {
+        setCopiedLocation(false);
+      }, 2500);
+    }
+  };
+
   return (
     <section className="w-full my-6 px-4">
       <div className="max-w-md mx-auto rounded-3xl bg-white border border-[#E7D3A0] p-5 shadow-sm hover:shadow-md transition-shadow">
@@ -85,90 +100,44 @@ export const LocationSection: React.FC = () => {
           </div>
         </div>
 
-        {/* Realistic Stylized Map Canvas with Radar Waves */}
-        <div className="relative mt-4 w-full h-52 rounded-2xl bg-[#F6F3EB] border border-[#E7D3A0]/70 overflow-hidden shadow-inner flex items-center justify-center select-none">
-          {/* SVG Map Layout (Streets, Blocks, Avenues, Buildings) */}
-          <svg
-            className="absolute inset-0 w-full h-full opacity-85"
-            viewBox="0 0 400 220"
-            preserveAspectRatio="xMidYMid slice"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            {/* Base Block Parcels */}
-            <rect x="10" y="10" width="85" height="60" rx="6" fill="#EDE7DC" />
-            <rect x="105" y="10" width="95" height="60" rx="6" fill="#EDE7DC" />
-            <rect x="210" y="10" width="180" height="60" rx="6" fill="#EDE7DC" />
+        {/* Location Map Image with 1-Second Propagating Small Waves at the Red Point */}
+        <div className="relative mt-4 w-full rounded-2xl bg-[#F6F3EB] border border-[#E7D3A0]/70 overflow-hidden shadow-inner select-none">
+          <img
+            src="https://i.postimg.cc/cCd9KZYJ/Localizacao-Clara-Reis-Studio.jpg"
+            alt="Mapa de Localização Clara Reis Studio"
+            className="w-full h-auto block object-cover"
+            loading="lazy"
+          />
 
-            <rect x="10" y="80" width="85" height="65" rx="6" fill="#EDE7DC" />
-            <rect x="105" y="80" width="95" height="65" rx="6" fill="#E6DFD2" stroke="#E7D3A0" strokeWidth="1" />
-            <rect x="210" y="80" width="180" height="65" rx="6" fill="#EDE7DC" />
-
-            <rect x="10" y="155" width="85" height="55" rx="6" fill="#EDE7DC" />
-            <rect x="105" y="155" width="95" height="55" rx="6" fill="#EDE7DC" />
-            <rect x="210" y="155" width="180" height="55" rx="6" fill="#EDE7DC" />
-
-            {/* Subtle Green Park Area */}
-            <rect x="220" y="18" width="60" height="44" rx="8" fill="#E0EBD9" opacity="0.8" />
-            <circle cx="235" cy="35" r="4" fill="#C9DEBD" />
-            <circle cx="255" cy="42" r="5" fill="#C9DEBD" />
-
-            {/* Minor Streets */}
-            <line x1="0" y1="75" x2="400" y2="75" stroke="#FFFFFF" strokeWidth="10" />
-            <line x1="0" y1="150" x2="400" y2="150" stroke="#FFFFFF" strokeWidth="10" />
-            <line x1="100" y1="0" x2="100" y2="220" stroke="#FFFFFF" strokeWidth="10" />
-            <line x1="205" y1="0" x2="205" y2="220" stroke="#FFFFFF" strokeWidth="12" />
-
-            {/* Main Avenue intersecting near the salon */}
-            <line x1="0" y1="112" x2="400" y2="112" stroke="#FFFFFF" strokeWidth="16" />
-            <line x1="0" y1="112" x2="400" y2="112" stroke="#FAF8F3" strokeWidth="14" />
-            {/* Center Dashed Lane */}
-            <line x1="0" y1="112" x2="400" y2="112" stroke="#E7D3A0" strokeWidth="1.5" strokeDasharray="6,8" />
-
-            {/* Secondary Cross Avenue */}
-            <line x1="205" y1="0" x2="205" y2="220" stroke="#FFFFFF" strokeWidth="16" />
-            <line x1="205" y1="0" x2="205" y2="220" stroke="#FAF8F3" strokeWidth="14" />
-            <line x1="205" y1="0" x2="205" y2="220" stroke="#E7D3A0" strokeWidth="1.5" strokeDasharray="6,8" />
-
-            {/* Street Names (Discreet & Aesthetic) */}
-            <text x="25" y="115" fill="#77736D" fontSize="8" fontFamily="system-ui" letterSpacing="1">
-              AVENIDA PRINCIPAL
-            </text>
-            <text x="215" y="45" fill="#77736D" fontSize="7" fontFamily="system-ui" letterSpacing="0.5">
-              PRAÇA DAS FLORES
-            </text>
-          </svg>
-
-          {/* Compass Rose Indicator in Top Corner */}
+          {/* Compass / Active Status in Top Corner */}
           <div className="absolute top-2.5 right-2.5 px-2 py-0.5 rounded-full bg-white/90 backdrop-blur-sm border border-[#E7D3A0]/60 shadow-sm flex items-center gap-1 text-[9px] font-semibold text-[#171717] tracking-wider pointer-events-none">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#C6A15B]" />
+            <span className="w-1.5 h-1.5 rounded-full bg-[#E53E3E] animate-ping" />
             MAPA ATIVO
           </div>
 
-          {/* Golden Radar Wave Rings (Spaced out at 3-second intervals) */}
+          {/* Propagating Waves & Studio Name Centered on the Red Point (X: 67.64%, Y: 70.56%) */}
           <div
-            aria-hidden="true"
-            className="absolute w-28 h-28 rounded-full border-2 border-[#C6A15B] animate-radar-1 pointer-events-none"
-          />
-          <div
-            aria-hidden="true"
-            className="absolute w-28 h-28 rounded-full border border-[#E7D3A0] animate-radar-2 pointer-events-none"
-          />
+            className="absolute -translate-x-1/2 -translate-y-1/2 pointer-events-none flex items-center justify-center z-10"
+            style={{ left: '67.64%', top: '70.56%' }}
+          >
+            {/* Wave 1: 1-second propagating small wave */}
+            <span
+              aria-hidden="true"
+              className="absolute w-7 h-7 sm:w-8 sm:h-8 rounded-full border-2 border-[#E53E3E] animate-wave-small-1 pointer-events-none"
+            />
+            {/* Wave 2: Staggered 1-second propagating small wave */}
+            <span
+              aria-hidden="true"
+              className="absolute w-7 h-7 sm:w-8 sm:h-8 rounded-full border-2 border-[#C6A15B] animate-wave-small-2 pointer-events-none"
+            />
 
-          {/* Central Map Pin on Clara Reis Studio Location */}
-          <div className="relative z-10 flex flex-col items-center">
-            {/* Subtle glow */}
-            <div className="absolute w-12 h-12 rounded-full bg-[#C6A15B]/30 blur-md pointer-events-none" />
+            {/* Central Pin Dot Indicator */}
+            <span className="relative w-3 h-3 rounded-full bg-[#E53E3E] ring-2 ring-white shadow-md z-10" />
 
-            {/* Pin Node */}
-            <div className="relative w-11 h-11 rounded-full bg-gradient-to-br from-[#E7D3A0] via-[#C6A15B] to-[#997736] p-0.5 shadow-xl shadow-[#C6A15B]/40 flex items-center justify-center">
-              <div className="w-full h-full rounded-full bg-[#171717] flex items-center justify-center text-[#E7D3A0]">
-                <MapPin className="w-5 h-5 fill-[#E7D3A0] text-[#171717]" />
-              </div>
-            </div>
-
-            {/* Studio Badge on Map */}
-            <div className="mt-1.5 px-3 py-1 rounded-full bg-white/95 backdrop-blur-md border border-[#E7D3A0] shadow-md">
-              <span className="font-serif text-xs font-bold text-[#171717] tracking-wider whitespace-nowrap">
+            {/* Written: Clara Reis Studio */}
+            <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1.5 px-2.5 py-0.5 rounded-full bg-white/95 backdrop-blur-sm border border-[#C6A15B] shadow-md whitespace-nowrap pointer-events-none">
+              <span className="font-serif text-[10px] sm:text-[11px] font-bold text-[#171717] tracking-wider flex items-center gap-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#E53E3E] animate-pulse" />
                 Clara Reis Studio
               </span>
             </div>
@@ -238,18 +207,29 @@ export const LocationSection: React.FC = () => {
             </a>
           </div>
 
-          {/* Primary Action Button: Traçar Rota no Google Maps */}
+          {/* Primary Action Button: Copiar Local */}
           <div className="mt-3">
-            <a
-              href={googleRouteUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative w-full py-3 px-4 rounded-xl bg-gradient-to-r from-white via-[#FAF8F3] to-white hover:bg-gradient-to-r hover:from-[#C6A15B] hover:via-[#E7D3A0] hover:to-[#C6A15B] border border-[#C6A15B] text-[#171717] font-semibold text-xs tracking-wider uppercase flex items-center justify-center gap-2 shadow-sm hover:shadow-md hover:shadow-[#C6A15B]/20 transition-all duration-300 active:scale-[0.98]"
+            <button
+              type="button"
+              onClick={handleCopyLocation}
+              className={`group relative w-full py-3.5 px-4 rounded-xl border font-semibold text-xs tracking-wider uppercase flex items-center justify-center gap-2 shadow-sm transition-all duration-300 active:scale-[0.97] ${
+                copiedLocation
+                  ? 'bg-[#171717] text-[#FAF8F3] border-[#C6A15B] shadow-md'
+                  : 'bg-gradient-to-r from-white via-[#FAF8F3] to-white hover:bg-gradient-to-r hover:from-[#C6A15B] hover:via-[#E7D3A0] hover:to-[#C6A15B] active:bg-[#C6A15B] active:text-[#171717] border-[#C6A15B] text-[#171717] hover:shadow-md hover:shadow-[#C6A15B]/20'
+              }`}
             >
-              <Navigation className="w-4 h-4 text-[#C6A15B] group-hover:text-[#171717] transition-colors" />
-              <span>Traçar Rota no Google Maps</span>
-              <ExternalLink className="w-3.5 h-3.5 text-[#77736D] group-hover:text-[#171717] transition-colors" />
-            </a>
+              {copiedLocation ? (
+                <>
+                  <Check className="w-4 h-4 text-[#E7D3A0]" />
+                  <span>Local copiado com sucesso!</span>
+                </>
+              ) : (
+                <>
+                  <Copy className="w-4 h-4 text-[#C6A15B] group-hover:text-[#171717] group-active:text-[#171717] transition-colors" />
+                  <span>Copiar local</span>
+                </>
+              )}
+            </button>
           </div>
         </div>
       </div>

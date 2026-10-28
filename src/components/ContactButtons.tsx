@@ -1,6 +1,7 @@
 import React from 'react';
 import { ChevronRight } from 'lucide-react';
 import { DEFAULT_STUDIO_CONFIG } from '../config/studioConfig';
+import { ScrollReveal } from './ScrollReveal';
 
 // Custom Authentic Brand SVGs
 const WhatsAppIcon: React.FC<{ className?: string }> = ({ className = 'w-5 h-5' }) => (
@@ -36,79 +37,85 @@ export const ContactButtons: React.FC = () => {
     <section className="w-full my-6 px-4">
       <div className="max-w-md mx-auto flex flex-col gap-3.5">
         {/* 1. WhatsApp */}
-        <a
-          href={DEFAULT_STUDIO_CONFIG.links.whatsapp}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group relative flex items-center justify-between w-full p-4 rounded-2xl bg-white border border-[#E7D3A0] shadow-sm hover:shadow-md hover:border-[#C6A15B] transition-all duration-300 active:scale-[0.98] hover:-translate-y-0.5"
-        >
-          <div className="flex items-center gap-3.5">
-            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#FAF8F3] to-[#E7D3A0]/60 border border-[#C6A15B]/30 flex items-center justify-center text-[#C6A15B] shadow-inner group-hover:scale-105 group-hover:bg-[#C6A15B] group-hover:text-white transition-all duration-300">
-              <WhatsAppIcon className="w-6 h-6" />
+        <ScrollReveal delayMs={0} distance={20} className="w-full">
+          <a
+            href={DEFAULT_STUDIO_CONFIG.links.whatsapp}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative flex items-center justify-between w-full p-4 rounded-2xl bg-white border border-[#E7D3A0] shadow-sm hover:shadow-md hover:border-[#C6A15B] transition-all duration-300 active:scale-[0.98] active:border-[#C6A15B] active:bg-[#FAF8F3]/70 hover:-translate-y-0.5"
+          >
+            <div className="flex items-center gap-3.5">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#FAF8F3] to-[#E7D3A0]/60 border border-[#C6A15B]/30 flex items-center justify-center text-[#C6A15B] shadow-inner group-hover:scale-105 group-active:scale-105 group-hover:bg-[#C6A15B] group-active:bg-[#C6A15B] group-hover:text-white group-active:text-white transition-all duration-300">
+                <WhatsAppIcon className="w-6 h-6" />
+              </div>
+              <div className="text-left">
+                <span className="block text-sm sm:text-base font-semibold text-[#171717] tracking-tight group-hover:text-[#C6A15B] group-active:text-[#C6A15B] transition-colors">
+                  Falar pelo WhatsApp
+                </span>
+                <span className="block text-xs text-[#77736D]">
+                  Tire dúvidas e consulte horários
+                </span>
+              </div>
             </div>
-            <div className="text-left">
-              <span className="block text-sm sm:text-base font-semibold text-[#171717] tracking-tight group-hover:text-[#C6A15B] transition-colors">
-                Falar pelo WhatsApp
-              </span>
-              <span className="block text-xs text-[#77736D]">
-                Tire dúvidas e consulte horários
-              </span>
+            <div className="w-8 h-8 rounded-full flex items-center justify-center text-[#77736D] group-hover:text-[#C6A15B] group-active:text-[#C6A15B] group-hover:translate-x-1 group-active:translate-x-1 transition-all">
+              <ChevronRight className="w-5 h-5" />
             </div>
-          </div>
-          <div className="w-8 h-8 rounded-full flex items-center justify-center text-[#77736D] group-hover:text-[#C6A15B] group-hover:translate-x-1 transition-all">
-            <ChevronRight className="w-5 h-5" />
-          </div>
-        </a>
+          </a>
+        </ScrollReveal>
 
         {/* 2. Instagram */}
-        <a
-          href={DEFAULT_STUDIO_CONFIG.links.instagram}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group relative flex items-center justify-between w-full p-4 rounded-2xl bg-white border border-[#E7D3A0] shadow-sm hover:shadow-md hover:border-[#C6A15B] transition-all duration-300 active:scale-[0.98] hover:-translate-y-0.5"
-        >
-          <div className="flex items-center gap-3.5">
-            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#FAF8F3] to-[#E7D3A0]/60 border border-[#C6A15B]/30 flex items-center justify-center text-[#C6A15B] shadow-inner group-hover:scale-105 group-hover:bg-[#C6A15B] group-hover:text-white transition-all duration-300">
-              <InstagramIcon className="w-6 h-6" />
+        <ScrollReveal delayMs={120} distance={20} className="w-full">
+          <a
+            href={DEFAULT_STUDIO_CONFIG.links.instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative flex items-center justify-between w-full p-4 rounded-2xl bg-white border border-[#E7D3A0] shadow-sm hover:shadow-md hover:border-[#C6A15B] transition-all duration-300 active:scale-[0.98] active:border-[#C6A15B] active:bg-[#FAF8F3]/70 hover:-translate-y-0.5"
+          >
+            <div className="flex items-center gap-3.5">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#FAF8F3] to-[#E7D3A0]/60 border border-[#C6A15B]/30 flex items-center justify-center text-[#C6A15B] shadow-inner group-hover:scale-105 group-active:scale-105 group-hover:bg-[#C6A15B] group-active:bg-[#C6A15B] group-hover:text-white group-active:text-white transition-all duration-300">
+                <InstagramIcon className="w-6 h-6" />
+              </div>
+              <div className="text-left">
+                <span className="block text-sm sm:text-base font-semibold text-[#171717] tracking-tight group-hover:text-[#C6A15B] group-active:text-[#C6A15B] transition-colors">
+                  Conheça nosso Instagram
+                </span>
+                <span className="block text-xs text-[#77736D]">
+                  @clarareisstudio · Fotos & Novidades
+                </span>
+              </div>
             </div>
-            <div className="text-left">
-              <span className="block text-sm sm:text-base font-semibold text-[#171717] tracking-tight group-hover:text-[#C6A15B] transition-colors">
-                Conheça nosso Instagram
-              </span>
-              <span className="block text-xs text-[#77736D]">
-                @clarareisstudio · Fotos & Novidades
-              </span>
+            <div className="w-8 h-8 rounded-full flex items-center justify-center text-[#77736D] group-hover:text-[#C6A15B] group-active:text-[#C6A15B] group-hover:translate-x-1 group-active:translate-x-1 transition-all">
+              <ChevronRight className="w-5 h-5" />
             </div>
-          </div>
-          <div className="w-8 h-8 rounded-full flex items-center justify-center text-[#77736D] group-hover:text-[#C6A15B] group-hover:translate-x-1 transition-all">
-            <ChevronRight className="w-5 h-5" />
-          </div>
-        </a>
+          </a>
+        </ScrollReveal>
 
-        {/* 3. Google Avaliação (positioned between Instagram and Agendamento) */}
-        <a
-          href={DEFAULT_STUDIO_CONFIG.links.googleReview}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group relative flex items-center justify-between w-full p-4 rounded-2xl bg-white border border-[#E7D3A0] shadow-sm hover:shadow-md hover:border-[#C6A15B] transition-all duration-300 active:scale-[0.98] hover:-translate-y-0.5"
-        >
-          <div className="flex items-center gap-3.5">
-            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#FAF8F3] to-[#E7D3A0]/60 border border-[#C6A15B]/30 flex items-center justify-center text-[#C6A15B] shadow-inner group-hover:scale-105 group-hover:bg-[#C6A15B] group-hover:text-white transition-all duration-300">
-              <GoogleIcon className="w-6 h-6" />
+        {/* 3. Google Avaliação */}
+        <ScrollReveal delayMs={240} distance={20} className="w-full">
+          <a
+            href={DEFAULT_STUDIO_CONFIG.links.googleReview}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative flex items-center justify-between w-full p-4 rounded-2xl bg-white border border-[#E7D3A0] shadow-sm hover:shadow-md hover:border-[#C6A15B] transition-all duration-300 active:scale-[0.98] active:border-[#C6A15B] active:bg-[#FAF8F3]/70 hover:-translate-y-0.5"
+          >
+            <div className="flex items-center gap-3.5">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#FAF8F3] to-[#E7D3A0]/60 border border-[#C6A15B]/30 flex items-center justify-center text-[#C6A15B] shadow-inner group-hover:scale-105 group-active:scale-105 group-hover:bg-[#C6A15B] group-active:bg-[#C6A15B] group-hover:text-white group-active:text-white transition-all duration-300">
+                <GoogleIcon className="w-6 h-6" />
+              </div>
+              <div className="text-left">
+                <span className="block text-sm sm:text-base font-semibold text-[#171717] tracking-tight group-hover:text-[#C6A15B] group-active:text-[#C6A15B] transition-colors">
+                  Avalie-nos no Google
+                </span>
+                <span className="block text-xs text-[#77736D]">
+                  Compartilhe sua experiência no Studio
+                </span>
+              </div>
             </div>
-            <div className="text-left">
-              <span className="block text-sm sm:text-base font-semibold text-[#171717] tracking-tight group-hover:text-[#C6A15B] transition-colors">
-                Avalie-nos no Google
-              </span>
-              <span className="block text-xs text-[#77736D]">
-                Compartilhe sua experiência no Studio
-              </span>
+            <div className="w-8 h-8 rounded-full flex items-center justify-center text-[#77736D] group-hover:text-[#C6A15B] group-active:text-[#C6A15B] group-hover:translate-x-1 group-active:translate-x-1 transition-all">
+              <ChevronRight className="w-5 h-5" />
             </div>
-          </div>
-          <div className="w-8 h-8 rounded-full flex items-center justify-center text-[#77736D] group-hover:text-[#C6A15B] group-hover:translate-x-1 transition-all">
-            <ChevronRight className="w-5 h-5" />
-          </div>
-        </a>
+          </a>
+        </ScrollReveal>
       </div>
     </section>
   );
