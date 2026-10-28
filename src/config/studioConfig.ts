@@ -84,8 +84,8 @@ export const DEFAULT_STUDIO_CONFIG: StudioConfig = {
     },
   ],
   wifi: {
-    name: 'Clara Reis Studio',
-    password: 'clarareis2026',
+    name: 'CLARA REIS STUDIO',
+    password: 'Studio2804',
   },
   schedule: [
     {
